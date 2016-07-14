@@ -1,0 +1,10 @@
+ <h1>Fits</h1>
+
+ <?php foreach ($this->fits as $fit): ?>
+ <article>
+     <h1 id="post<?= $fit->getId() ?>"><?= $fit->getSteps() ?> steps</h1>
+     <p>
+         <?= $fit->getDate() ?>
+     </p>
+ </article>
+ <?php endforeach ?>
