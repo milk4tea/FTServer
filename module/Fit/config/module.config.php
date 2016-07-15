@@ -10,6 +10,7 @@
         'controllers' => array(
             'factories' => array(
                 'Fit\Controller\List' => 'Fit\Factory\ListControllerFactory',
+                'Fit\Controller\Write' => 'Fit\Factory\WriteControllerFactory',
             )
         ),
         'router' => array(
@@ -24,6 +25,42 @@
                         )
                     ),
                     'may_terminate' => true,
+                    'child_routes' => array(
+                        'detail' => array(
+                            'type' => 'segment',
+                            'options' => array(
+                                'route' => '/:id',
+                                'defaults' => array(
+                                    'action' => 'detail'
+                                )
+                            ),
+                            'constraints' => array(
+                                'id' => '[1-9]\d*'
+                            )
+                        ),
+                        'add' => array(
+                            'type' => 'literal',
+                            'options' => array(
+                                'route' => '/add',
+                                'defaults' => array(
+                                    'controller' => 'Fit\Controller\Write',
+                                    'action' => 'add'
+                                )
+                            )
+                        ),
+                        'edit' => array(
+                            'type' => 'segment',
+                            'options' => array(
+                                'route' => '/edit/:id',
+                                'defaults' => array(
+                                    'controller' => 'Fit\Controller\Write',
+                                    'action' => 'edit'
+                                ),
+                                
+                            )
+                        )
+                        
+                    )
                 ),
             ),
         ),

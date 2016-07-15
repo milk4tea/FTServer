@@ -22,5 +22,19 @@ class ListController extends AbstractActionController {
             'fits' => $this->fitService->findAll()
         ));
     }
+    
+    public function detailAction() {
+        $id = $this->params('id');
+        
+        try {
+            $fit = $this->fitService->find($id);
+        } catch (Exception $ex) {
+            return $this->redirect()->toRoute('fit');
+        }
+        
+        return new ViewModel(array(
+            'fit' => $fit
+        ));
+    }
             
 }

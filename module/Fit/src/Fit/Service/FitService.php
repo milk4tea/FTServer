@@ -2,6 +2,7 @@
 namespace Fit\Service;
 
 use Fit\Mapper\FitMapperInterface;
+use Fit\Model\FitInterface;
 
 /**
  * Description of FitService
@@ -21,6 +22,10 @@ class FitService implements FitServiceInterface {
 
     public function findAll() {
         return $this->fitMapper->findAll();
+    }
+
+    public function save(FitInterface $fitObj) {
+        return $this->fitMapper->save($fitObj);
     }
 
 }

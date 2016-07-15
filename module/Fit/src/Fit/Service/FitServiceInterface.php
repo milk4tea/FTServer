@@ -30,4 +30,13 @@ interface FitServiceInterface {
      */
     public function find($id);
     
+    /**
+     * 
+     * @param FitInterface $fitObj
+     * 
+     * @return FitInterface $fitObj
+     * @throws \Exception
+     */
+    public function save(FitInterface $fitObj);
+    
 }
